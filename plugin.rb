@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 # name: discourse-fitness-challenge
-# about: Fitness challenge tracking plugin — check in via hashtag or image, track progress, view leaderboards.
-# version: 0.1.0
-# authors: Discourse
-# url: https://github.com/discourse/discourse-fitness-challenge
+# about: Run time-limited fitness challenges on your Discourse forum. Participants check in by posting with a hashtag or uploading a workout photo. Admins get a real-time leaderboard dashboard, automated weekly progress posts, and a final results post with optional badge awards.
+# version: 1.0.0
+# authors: Rusty
+# url: https://github.com/rusty/discourse-fitness-challenge
 # required_version: 2.7.0
 
 enabled_site_setting :fitness_challenge_enabled
