@@ -32,6 +32,7 @@ en:
           hashtag_placeholder: "e.g. workout (without #)"
           start_date: "Start date"
           end_date: "End date"
+          challenge_timezone: "Challenge timezone"
           check_ins_needed: "Check-ins needed"
           description: "Description (optional)"
           description_placeholder: "Describe the challenge…"

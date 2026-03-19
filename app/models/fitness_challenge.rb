@@ -38,15 +38,23 @@ class FitnessChallenge < ActiveRecord::Base
               less_than_or_equal_to: 23,
             }
   validates :badge_name, length: { maximum: 100 }, allow_blank: true
+  validates :challenge_timezone,
+            inclusion: {
+              in: ActiveSupport::TimeZone.all.map(&:name),
+              message: "is not a valid timezone",
+            }
 
   scope :active, -> {
     today = Date.current
-    where("start_date <= ? AND end_date > ?", today, today)
+    # ±1 day buffer so challenges in timezones offset from UTC are not
+    # prematurely excluded or included at date boundaries.
+    where("start_date <= ? AND end_date > ?", today + 1, today - 1)
   }
 
   def active?
-    today = Date.current
-    today >= start_date && today < end_date
+    tz = ActiveSupport::TimeZone[challenge_timezone] || Time.zone
+    local_today = Time.now.in_time_zone(tz).to_date
+    local_today >= start_date && local_today < end_date
   end
 
   def elapsed_days

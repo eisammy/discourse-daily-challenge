@@ -7,8 +7,8 @@ module DiscourseFitnessChallenge
     def self.process(post)
       return if post.topic_id.nil?
 
-      challenge = FitnessChallenge.active.find_by(topic_id: post.topic_id)
-      return unless challenge
+      challenge = FitnessChallenge.find_by(topic_id: post.topic_id)
+      return unless challenge&.active?
 
       user = post.user
       return unless user

@@ -70,6 +70,7 @@ class DiscourseFitnessChallenge::AdminFitnessChallengesController < Admin::Admin
       :weekly_post_hour,
       :award_badge,
       :badge_name,
+      :challenge_timezone,
     )
   end
 

@@ -19,7 +19,8 @@ class FitnessChallengeSerializer < ApplicationSerializer
              :weekly_post_hour,
              :award_badge,
              :badge_name,
-             :badge_id
+             :badge_id,
+             :challenge_timezone
 
   def topic_url
     object.topic&.relative_url

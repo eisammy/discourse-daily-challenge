@@ -7,10 +7,12 @@ module Jobs
     def execute(_args)
       return unless SiteSetting.fitness_challenge_enabled
 
-      now = Time.now.utc
-
       FitnessChallenge.active.includes(:topic).find_each do |challenge|
         next unless challenge.weekly_post_enabled
+        next unless challenge.active?
+
+        tz = ActiveSupport::TimeZone[challenge.challenge_timezone] || Time.zone
+        now = Time.now.in_time_zone(tz)
         next unless now.wday == challenge.weekly_post_day
         next unless now.hour == challenge.weekly_post_hour
 

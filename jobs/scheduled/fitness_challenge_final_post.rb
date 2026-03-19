@@ -7,12 +7,20 @@ module Jobs
     def execute(_args)
       return unless SiteSetting.fitness_challenge_enabled
 
-      yesterday = Date.current - 1
+      # Cast a ±1-day net in UTC so no challenge is missed due to timezone
+      # offsets, then do a precise per-challenge timezone check in Ruby.
+      yesterday_utc = Date.current - 1
 
       FitnessChallenge
-        .where(end_date: yesterday, final_post_sent: false)
+        .where(
+          end_date: (yesterday_utc - 1)..(yesterday_utc + 1),
+          final_post_sent: false,
+        )
         .includes(:topic)
         .find_each do |challenge|
+          tz = ActiveSupport::TimeZone[challenge.challenge_timezone] || Time.zone
+          local_yesterday = Time.now.in_time_zone(tz).to_date - 1
+          next unless challenge.end_date == local_yesterday
           post_final_results(challenge)
         rescue StandardError => e
           Rails.logger.error(
