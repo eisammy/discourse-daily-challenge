@@ -88,7 +88,10 @@
       "Bash(bin/lint plugins/discourse-fitness-challenge/admin/assets/javascripts/admin/components/admin-fitness-challenge-form.gjs plugins/discourse-fitness-challenge/app/controllers/discourse_fitness_challenge/admin_fitness_challenges_controller.rb)",
       "Bash(echo \"exit:$?\")",
       "Bash(bin/lint --fix plugins/discourse-fitness-challenge/admin/assets/javascripts/admin/components/admin-fitness-challenge-form.gjs plugins/discourse-fitness-challenge/app/controllers/discourse_fitness_challenge/admin_fitness_challenges_controller.rb)",
-      "Bash(script -q -c \"bin/lint plugins/discourse-fitness-challenge/admin/assets/javascripts/admin/components/admin-fitness-challenge-form.gjs\" /dev/null)"
+      "Bash(script -q -c \"bin/lint plugins/discourse-fitness-challenge/admin/assets/javascripts/admin/components/admin-fitness-challenge-form.gjs\" /dev/null)",
+      "Bash(bin/lint plugins/discourse-fitness-challenge/db/migrate/20260318000003_replace_num_days_on_fitness_challenges.rb plugins/discourse-fitness-challenge/db/migrate/20260318000004_add_final_post_sent_to_fitness_challenges.rb plugins/discourse-fitness-challenge/db/migrate/20260318000005_add_weekly_post_settings_to_fitness_challenges.rb plugins/discourse-fitness-challenge/db/migrate/20260318000006_add_badge_fields_to_fitness_challenges.rb)",
+      "Bash(bin/lint --fix plugins/discourse-fitness-challenge/db/migrate/20260318000003_replace_num_days_on_fitness_challenges.rb plugins/discourse-fitness-challenge/db/migrate/20260318000004_add_final_post_sent_to_fitness_challenges.rb plugins/discourse-fitness-challenge/db/migrate/20260318000005_add_weekly_post_settings_to_fitness_challenges.rb plugins/discourse-fitness-challenge/db/migrate/20260318000006_add_badge_fields_to_fitness_challenges.rb)",
+      "Bash(ruby -c plugins/discourse-fitness-challenge/db/migrate/20260318000003_replace_num_days_on_fitness_challenges.rb plugins/discourse-fitness-challenge/db/migrate/20260318000004_add_final_post_sent_to_fitness_challenges.rb plugins/discourse-fitness-challenge/db/migrate/20260318000005_add_weekly_post_settings_to_fitness_challenges.rb plugins/discourse-fitness-challenge/db/migrate/20260318000006_add_badge_fields_to_fitness_challenges.rb)"
     ]
   }
 }

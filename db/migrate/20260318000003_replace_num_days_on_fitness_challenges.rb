@@ -2,20 +2,26 @@
 
 class ReplaceNumDaysOnFitnessChallenges < ActiveRecord::Migration[7.0]
   def up
-    # Add end_date, populated from existing start_date + num_days data
-    add_column :fitness_challenges, :end_date, :date
-    add_column :fitness_challenges, :check_ins_needed, :integer, default: 20, null: false
+    unless column_exists?(:fitness_challenges, :end_date)
+      add_column :fitness_challenges, :end_date, :date
 
-    execute <<~SQL
-      UPDATE fitness_challenges
-      SET end_date = start_date + (num_days * INTERVAL '1 day')
-    SQL
+      if column_exists?(:fitness_challenges, :num_days)
+        execute <<~SQL
+          UPDATE fitness_challenges
+          SET end_date = start_date + (num_days * INTERVAL '1 day')
+        SQL
+      end
 
-    change_column_null :fitness_challenges, :end_date, false
+      change_column_null :fitness_challenges, :end_date, false
+    end
+
+    unless column_exists?(:fitness_challenges, :check_ins_needed)
+      add_column :fitness_challenges, :check_ins_needed, :integer, default: 20, null: false
+    end
   end
 
   def down
-    add_column :fitness_challenges, :num_days, :integer
+    add_column :fitness_challenges, :num_days, :integer unless column_exists?(:fitness_challenges, :num_days)
 
     execute <<~SQL
       UPDATE fitness_challenges
@@ -24,7 +30,7 @@ class ReplaceNumDaysOnFitnessChallenges < ActiveRecord::Migration[7.0]
 
     change_column_null :fitness_challenges, :num_days, false
 
-    remove_column :fitness_challenges, :end_date
-    remove_column :fitness_challenges, :check_ins_needed
+    remove_column :fitness_challenges, :end_date if column_exists?(:fitness_challenges, :end_date)
+    remove_column :fitness_challenges, :check_ins_needed if column_exists?(:fitness_challenges, :check_ins_needed)
   end
 end
