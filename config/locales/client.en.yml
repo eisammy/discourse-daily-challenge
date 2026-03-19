@@ -2,12 +2,12 @@ en:
   js:
     daily_challenge:
       admin:
-        title: "Fitness Challenges"
+        title: "Daily Challenges"
         nav:
           dashboard: "Dashboard"
           challenges: "Challenges"
         challenges:
-          title: "Fitness Challenges"
+          title: "Daily Challenges"
           new: "New Challenge"
           none: "No challenges created yet."
           cta: "Create your first challenge"
