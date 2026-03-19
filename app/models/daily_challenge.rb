@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class DailyChallenge < ActiveRecord::Base
-  self.table_name = "daily_challenges"
+  self.table_name = "fitness_challenges"
   self.ignored_columns = ["num_days"]
 
   belongs_to :topic
