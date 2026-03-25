@@ -465,6 +465,7 @@ export default class AdminDailyChallengeForm extends Component {
         <form.Field
           @name="check_in_interval"
           @title={{i18n "daily_challenge.admin.form.check_in_interval"}}
+          @validation="required"
           @type="select"
           @onSet={{this.handleCheckInInterval}}
           as |field|
