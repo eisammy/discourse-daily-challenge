@@ -13,6 +13,7 @@ module DiscourseDailyChallenge
         topic_id: topic.id,
         raw: build_post_body(challenge),
         skip_validations: true,
+        skip_guardian: true,
       )
     end
 

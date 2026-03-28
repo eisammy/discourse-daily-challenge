@@ -45,6 +45,7 @@ module Jobs
         topic_id: topic.id,
         raw: build_final_post_body(challenge, eligible, counts_by_user.size),
         skip_validations: true,
+        skip_guardian: true,
       )
 
       award_badges(challenge, eligible)
