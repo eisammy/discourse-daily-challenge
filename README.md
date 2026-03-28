@@ -35,11 +35,11 @@ Add the plugin to your Discourse `app.yml`:
 
 ```yaml
 hooks:
-  after_assets_precompile:
+  after_code:
     - exec:
-        cd: $home
+        cd: $home/plugins
         cmd:
-          - git clone https://github.com/R23DPrinting/discourse-daily-challenge.git plugins/discourse-daily-challenge
+          - git clone https://github.com/R23DPrinting/discourse-daily-challenge.git
 ```
 
 Then rebuild your container:
