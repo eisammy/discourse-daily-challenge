@@ -48,6 +48,7 @@ after_initialize do
   require_relative "jobs/scheduled/daily_challenge_final_post"
   require_relative "app/jobs/scheduled/discourse_daily_challenge_send_reminders"
   require_relative "app/jobs/regular/discourse_daily_challenge_send_checkin_dm"
+  require_relative "app/jobs/regular/discourse_daily_challenge_send_completion_dm"
 
   add_to_serializer(:current_user, :is_challenge_manager) do
     ::CategoryModerationGroup.joins(group: :group_users).where(group_users: { user_id: object.id }).exists?

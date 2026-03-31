@@ -42,11 +42,21 @@ module DiscourseDailyChallenge
 
       clear_reminder_keys(challenge, user.id)
 
+      total_check_ins = DailyCheckIn.where(challenge_id: challenge.id, user_id: user.id).count
+
       Jobs.enqueue(
         :discourse_daily_challenge_send_checkin_dm,
         user_id: user.id,
         challenge_id: challenge.id,
       )
+
+      if total_check_ins == challenge.check_ins_needed
+        Jobs.enqueue(
+          :discourse_daily_challenge_send_completion_dm,
+          user_id: user.id,
+          challenge_id: challenge.id,
+        )
+      end
     rescue StandardError => e
       Rails.logger.error("DailyChallenge check-in error for post #{post.id}: #{e.message}")
     end

@@ -196,7 +196,7 @@ module DiscourseDailyChallenge
         return "#{header}\n\n#{I18n.t("daily_challenge.bot.commands.checkins_none")}"
       end
 
-      rows = dates.map { |d| I18n.t("daily_challenge.bot.commands.checkins_row", date: d.iso8601) }
+      rows = dates.map { |d| I18n.t("daily_challenge.bot.commands.checkins_row", date: d.strftime("%B %-d, %Y")) }
       "#{header}\n\n#{rows.join("\n")}"
     end
 

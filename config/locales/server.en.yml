@@ -34,6 +34,20 @@ en:
         ✅ Check-in recorded for %{topic_link}!
 
         Your current streak: **%{streak_text}** 🔥
+        Progress: **%{check_ins} of %{needed}** check-ins completed
+      checkin_dm_body_first: |
+        🎉 Welcome to the challenge! Your first check-in for %{topic_link} has been recorded. Great start — keep it up!
+
+        You need **%{needed}** check-ins to complete the challenge. You've got this! 💪
+      completion_dm_title: "Challenge complete! 🏆"
+      completion_dm_body_with_badge: |
+        🏆 Amazing work! You've completed the %{topic_link} challenge with **%{check_ins}**!
+
+        You've qualified for the **%{badge_name}** badge — it will be awarded when the challenge ends. Incredible effort! 🎉
+      completion_dm_body: |
+        🏆 Amazing work! You've completed the %{topic_link} challenge with **%{check_ins}**!
+
+        Incredible effort — congratulations on finishing strong! 🎉
       reminder_dm_title: "Don't forget to check in — %{challenge_name}"
       checkin_count:
         one: "1 check-in"

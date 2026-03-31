@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jobs
-  class DiscourseDailyChallengeSendCheckinDm < ::Jobs::Base
+  class DiscourseDailyChallengeSendCompletionDm < ::Jobs::Base
     def execute(args)
       return unless SiteSetting.daily_challenge_enabled
 
@@ -24,35 +24,27 @@ module Jobs
         end
 
       check_ins = DailyCheckIn.where(challenge_id: challenge.id, user_id: user.id).count
-      needed = challenge.check_ins_needed
+      checkin_count_text = I18n.t("daily_challenge.bot.checkin_count", count: check_ins)
 
       raw =
-        if check_ins == 1
+        if challenge.award_badge && challenge.badge_name.present?
           I18n.t(
-            "daily_challenge.bot.checkin_dm_body_first",
+            "daily_challenge.bot.completion_dm_body_with_badge",
             topic_link: topic_link,
-            needed: needed,
+            check_ins: checkin_count_text,
+            badge_name: challenge.badge_name,
           )
         else
-          streak = DiscourseDailyChallenge::ChallengeUtils.user_streak(challenge, user.id)
-          streak_text =
-            if challenge.check_in_interval == "weekly"
-              I18n.t("daily_challenge.bot.streak_week", count: streak)
-            else
-              I18n.t("daily_challenge.bot.streak_day", count: streak)
-            end
           I18n.t(
-            "daily_challenge.bot.checkin_dm_body",
+            "daily_challenge.bot.completion_dm_body",
             topic_link: topic_link,
-            streak_text: streak_text,
-            check_ins: check_ins,
-            needed: needed,
+            check_ins: checkin_count_text,
           )
         end
 
       PostCreator.create!(
         bot,
-        title: I18n.t("daily_challenge.bot.checkin_dm_title"),
+        title: I18n.t("daily_challenge.bot.completion_dm_title"),
         raw: raw,
         archetype: Archetype.private_message,
         target_usernames: [user.username],
@@ -60,7 +52,7 @@ module Jobs
       )
     rescue StandardError => e
       Rails.logger.error(
-        "DailyChallenge checkin DM error for user #{args[:user_id]}, challenge #{args[:challenge_id]}: #{e.message}",
+        "DailyChallenge completion DM error for user #{args[:user_id]}, challenge #{args[:challenge_id]}: #{e.message}",
       )
     end
   end
