@@ -40,6 +40,8 @@ en:
         other: "%{count} check-ins"
       reminder_dm_body: |
         👋 Hey! We haven't seen you check in to %{topic_link} for a few days. You have **%{checkin_count}** so far — you need **%{needed}** to complete the challenge. Don't give up!
+      reminder_dm_body_2: |
+        👋 It's been a week since your last check-in in %{topic_link}. It's not too late to jump back in! You have **%{checkin_count}** toward your goal of **%{needed}**. We'd love to see you back! 💪
       rate_limit_dm_title: "Slow down!"
       rate_limit_dm_body: "You're sending commands too quickly. Please wait a while before trying again."
       streak_day:

@@ -40,6 +40,8 @@ module DiscourseDailyChallenge
         admin_added: false,
       )
 
+      clear_reminder_keys(challenge, user.id)
+
       Jobs.enqueue(
         :discourse_daily_challenge_send_checkin_dm,
         user_id: user.id,
@@ -47,6 +49,23 @@ module DiscourseDailyChallenge
       )
     rescue StandardError => e
       Rails.logger.error("DailyChallenge check-in error for post #{post.id}: #{e.message}")
+    end
+
+    def self.clear_reminder_keys(challenge, user_id)
+      if challenge.check_in_interval == "weekly"
+        tz = ActiveSupport::TimeZone[challenge.challenge_timezone] || Time.zone
+        today = Time.now.in_time_zone(tz).to_date
+        wday = DiscourseDailyChallenge::ChallengeUtils.week_start_wday(challenge)
+        week_start = DiscourseDailyChallenge::ChallengeUtils.week_start_for_date(today, wday)
+        Discourse.redis.del(
+          "daily_challenge:reminder_weekly:#{challenge.id}:#{user_id}:#{week_start}",
+        )
+      else
+        Discourse.redis.del(
+          "daily_challenge:reminder_1:#{challenge.id}:#{user_id}",
+          "daily_challenge:reminder_2:#{challenge.id}:#{user_id}",
+        )
+      end
     end
 
     def self.has_hashtag?(post, hashtag)
