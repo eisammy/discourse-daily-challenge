@@ -232,6 +232,14 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 ## Changelog
 
+### v1.4.1
+- **First check-in welcome DM** — members receive a special welcome message on their first check-in for a challenge
+- **Completion celebration DM** — members receive a congratulations DM when they hit the required check-ins, mentioning the badge name if one is configured
+- **Progress in confirmation DM** — check-in confirmation DMs now include current check-in count vs goal
+- **Two-stage reminder DMs** — reminders now sent at day 2 and day 7 of missed check-ins only, not every day; each stage sends once and resets when the user checks in
+- **Friendly date format** — `@ChallengeBot checkins` now shows dates as "March 24, 2026" instead of "2026-03-24"
+- **Leaderboard posts from ChallengeBot** — weekly leaderboard and final results posts are now sent from ChallengeBot if configured, falling back to the system user
+
 ### v1.4.0
 - **ChallengeBot check-in confirmation DMs** — participants receive a private message from the bot after each successful check-in, including a clickable link to the challenge topic and their current streak
 - **Reminder DMs** — daily challenges nudge participants after 2+ missed consecutive days; weekly challenges nudge on the last day of the week if not yet checked in. Message includes current check-in count and the goal. Duplicate DMs prevented via Redis (25-hour TTL per user/challenge/day).
