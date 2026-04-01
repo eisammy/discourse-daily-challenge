@@ -1,12 +1,5 @@
 project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_PERSONAL_TOKEN
-
-files:
-  - source: /config/locales/client.en.yml
-    translation: /config/locales/client.%locale_with_underscore%.yml
-  - source: /config/locales/server.en.yml
-    translation: /config/locales/server.%locale_with_underscore%.yml
-
 language_mapping:
   - language_id: af_ZA
     custom_code: af
@@ -56,3 +49,8 @@ language_mapping:
     custom_code: uk
   - language_id: vi_VN
     custom_code: vi
+files:
+  - source: /config/locales/client.en.yml
+    translation: /config/locales/client.%two_letters_code%.yml
+  - source: /config/locales/server.en.yml
+    translation: /config/locales/server.%two_letters_code%.yml
