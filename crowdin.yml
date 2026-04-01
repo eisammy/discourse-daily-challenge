@@ -5,3 +5,65 @@ files:
     translation: /config/locales/client.%locale%.yml
   - source: /config/locales/server.en.yml
     translation: /config/locales/server.%locale%.yml
+
+language_mapping:
+  - language_id: af
+    custom_code: af
+  - language_id: ar
+    custom_code: ar
+  - language_id: ca
+    custom_code: ca
+  - language_id: zh-CN
+    custom_code: zh_CN
+  - language_id: zh-TW
+    custom_code: zh_TW
+  - language_id: cs
+    custom_code: cs
+  - language_id: da
+    custom_code: da
+  - language_id: nl
+    custom_code: nl
+  - language_id: fi
+    custom_code: fi
+  - language_id: fr
+    custom_code: fr
+  - language_id: de
+    custom_code: de
+  - language_id: el
+    custom_code: el
+  - language_id: he
+    custom_code: he
+  - language_id: hu
+    custom_code: hu
+  - language_id: id
+    custom_code: id
+  - language_id: it
+    custom_code: it
+  - language_id: ja
+    custom_code: ja
+  - language_id: ko
+    custom_code: ko
+  - language_id: nb
+    custom_code: nb_NO
+  - language_id: pl
+    custom_code: pl
+  - language_id: pt-BR
+    custom_code: pt_BR
+  - language_id: pt-PT
+    custom_code: pt
+  - language_id: ro
+    custom_code: ro
+  - language_id: ru
+    custom_code: ru
+  - language_id: sr-CS
+    custom_code: sr
+  - language_id: es-ES
+    custom_code: es
+  - language_id: sv-SE
+    custom_code: sv
+  - language_id: tr
+    custom_code: tr
+  - language_id: uk
+    custom_code: uk
+  - language_id: vi
+    custom_code: vi
