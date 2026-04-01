@@ -1,68 +1,58 @@
 project_id_env: CROWDIN_PROJECT_ID
 api_token_env: CROWDIN_PERSONAL_TOKEN
-language_mapping:
-  - language_id: af
-    custom_code: af
-  - language_id: ar
-    custom_code: ar
-  - language_id: ca
-    custom_code: ca
-  - language_id: zh-CN
-    custom_code: zh_CN
-  - language_id: zh-TW
-    custom_code: zh_TW
-  - language_id: cs
-    custom_code: cs
-  - language_id: da
-    custom_code: da
-  - language_id: nl
-    custom_code: nl
-  - language_id: fi
-    custom_code: fi
-  - language_id: fr
-    custom_code: fr
-  - language_id: de
-    custom_code: de
-  - language_id: el
-    custom_code: el
-  - language_id: he
-    custom_code: he
-  - language_id: hu
-    custom_code: hu
-  - language_id: id
-    custom_code: id
-  - language_id: it
-    custom_code: it
-  - language_id: ja
-    custom_code: ja
-  - language_id: ko
-    custom_code: ko
-  - language_id: nb
-    custom_code: nb_NO
-  - language_id: pl
-    custom_code: pl
-  - language_id: pt-BR
-    custom_code: pt_BR
-  - language_id: pt-PT
-    custom_code: pt
-  - language_id: ro
-    custom_code: ro
-  - language_id: ru
-    custom_code: ru
-  - language_id: sr-CS
-    custom_code: sr
-  - language_id: es-ES
-    custom_code: es
-  - language_id: sv-SE
-    custom_code: sv
-  - language_id: tr
-    custom_code: tr
-  - language_id: uk
-    custom_code: uk
-  - language_id: vi
-    custom_code: vi
+
 files:
   - source: /config/locales/client.en.yml
     translation: /config/locales/client.%locale_with_underscore%.yml
   - source: /config/locales/server.en.yml
     translation: /config/locales/server.%locale_with_underscore%.yml
+
+language_mapping:
+  - language_id: af_ZA
+    custom_code: af
+  - language_id: ar_SA
+    custom_code: ar
+  - language_id: ca_ES
+    custom_code: ca
+  - language_id: cs_CZ
+    custom_code: cs
+  - language_id: da_DK
+    custom_code: da
+  - language_id: nl_NL
+    custom_code: nl
+  - language_id: fi_FI
+    custom_code: fi
+  - language_id: fr_FR
+    custom_code: fr
+  - language_id: de_DE
+    custom_code: de
+  - language_id: el_GR
+    custom_code: el
+  - language_id: he_IL
+    custom_code: he
+  - language_id: hu_HU
+    custom_code: hu
+  - language_id: id_ID
+    custom_code: id
+  - language_id: it_IT
+    custom_code: it
+  - language_id: ja_JP
+    custom_code: ja
+  - language_id: ko_KR
+    custom_code: ko
+  - language_id: pt_PT
+    custom_code: pt
+  - language_id: ro_RO
+    custom_code: ro
+  - language_id: ru_RU
+    custom_code: ru
+  - language_id: sr_CS
+    custom_code: sr
+  - language_id: es_ES
+    custom_code: es
+  - language_id: sv_SE
+    custom_code: sv
+  - language_id: uk_UA
+    custom_code: uk
+  - language_id: vi_VN
+    custom_code: vi
