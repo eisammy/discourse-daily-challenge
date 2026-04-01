@@ -1,0 +1,119 @@
+pl:
+  daily_challenge:
+    check_in:
+      already_exists: "A check-in for this user on that date already exists."
+      already_exists_this_week: "A check-in for this user already exists during that week."
+    weekly_post:
+      title: "Weekly Fitness Challenge Leaderboard"
+      period: "Week of %{start} – %{finish}"
+      days_elapsed: "Day **%{elapsed}** of **%{total}**"
+      user: "Participant"
+      check_ins: "Check-ins"
+      goal: "Goal"
+      progress: "Progress"
+      no_participants: "*No check-ins recorded yet. Be the first!*"
+      footer: "Keep going! Use the hashtag or post a photo to check in. 🔥"
+    final_post:
+      title: "Challenge Complete — Final Results 🏆"
+      intro: "The **#%{hashtag}** fitness challenge has ended. Here are the final results!"
+      eligible_header: "### Participants who completed the challenge"
+      row: "- @%{username} — %{count} check-ins"
+      congrats: "🏆 Congratulations to everyone who completed the challenge!"
+      no_completions: "*No participants reached the %{needed} check-in goal this time. Thanks to everyone who participated!*"
+      summary: "**%{completed} out of %{total} participants** completed the challenge by reaching %{needed} check-ins."
+    badge:
+      description_with_topic: "Awarded to participants who completed all required check-ins in %{title}."
+      description_fallback: "Awarded for successfully completing a fitness challenge."
+    errors:
+      access_denied: "You do not have permission to manage this challenge."
+      badge_name_required: "Badge name is required when awarding a completion badge."
+      category_access_denied: "You can only create challenges in categories you moderate."
+    bot:
+      checkin_dm_title: "Check-in confirmed!"
+      checkin_dm_body: |
+        ✅ Check-in recorded for %{topic_link}!
+
+        Your current streak: **%{streak_text}** 🔥
+        Progress: **%{check_ins} of %{needed}** check-ins completed
+      checkin_dm_body_first: |
+        🎉 Welcome to the challenge! Your first check-in for %{topic_link} has been recorded. Great start — keep it up!
+
+        You need **%{needed}** check-ins to complete the challenge. You've got this! 💪
+      completion_dm_title: "Challenge complete! 🏆"
+      completion_dm_body_with_badge: |
+        🏆 Amazing work! You've completed the %{topic_link} challenge with **%{check_ins}**!
+
+        You've qualified for the **%{badge_name}** badge — it will be awarded when the challenge ends. Incredible effort! 🎉
+      completion_dm_body: |
+        🏆 Amazing work! You've completed the %{topic_link} challenge with **%{check_ins}**!
+
+        Incredible effort — congratulations on finishing strong! 🎉
+      reminder_dm_title: "Don't forget to check in — %{challenge_name}"
+      checkin_count:
+        one: "1 check-in"
+        few: "%{count} check-ins"
+        many: "%{count} check-ins"
+        other: "%{count} check-ins"
+      reminder_dm_body: |
+        👋 Hey! We haven't seen you check in to %{topic_link} for a few days. You have **%{checkin_count}** so far — you need **%{needed}** to complete the challenge. Don't give up!
+      reminder_dm_body_2: |
+        👋 It's been a week since your last check-in in %{topic_link}. It's not too late to jump back in! You have **%{checkin_count}** toward your goal of **%{needed}**. We'd love to see you back! 💪
+      rate_limit_dm_title: "Slow down!"
+      rate_limit_dm_body: "You're sending commands too quickly. Please wait a while before trying again."
+      streak_day:
+        one: "1-day streak"
+        few: "%{count}-day streak"
+        many: "%{count}-day streak"
+        other: "%{count}-day streak"
+      streak_week:
+        one: "1-week streak"
+        few: "%{count}-week streak"
+        many: "%{count}-week streak"
+        other: "%{count}-week streak"
+      mention_dm_title: "Re: %{command} — %{challenge_name}"
+      commands:
+        status_header: "**Your active challenge status:**"
+        status_row: "- **%{challenge}** — %{check_ins} check-ins · %{streak} · %{pct}% complete"
+        status_none: "You haven't participated in any active challenges yet."
+        leaderboard_header: "**Current leaderboard for %{challenge}** (top 10):"
+        leaderboard_row: "%{rank}. @%{username} — %{count} check-ins"
+        leaderboard_none: "No check-ins recorded yet."
+        streak_message: "Your current streak in **%{challenge}**: **%{streak_text}** 🔥"
+        streak_none: "You haven't checked in to **%{challenge}** yet."
+        checkins_header: "**Your check-ins for %{challenge}** (%{count} total):"
+        checkins_row: "- %{date}"
+        checkins_none: "No check-ins recorded yet."
+        progress_message: |
+          **Progress for %{challenge}**
+
+          - Check-ins: %{done} / %{needed}
+          - %{time_remaining}
+          - Status: %{status}
+        progress_time_remaining_day:
+          one: "1 day remaining"
+          few: "%{count} days remaining"
+          many: "%{count} days remaining"
+          other: "%{count} days remaining"
+        progress_time_remaining_week:
+          one: "1 week remaining"
+          few: "%{count} weeks remaining"
+          many: "%{count} weeks remaining"
+          other: "%{count} weeks remaining"
+        progress_on_track: "On track ✅"
+        progress_behind: "Behind — pick it up! 💪"
+        progress_complete: "Goal reached! 🏆"
+        unknown_command: "Unknown command. Here's what I can do:"
+        help: |
+          **@%{bot_username} commands:**
+
+          - `status` — your stats across all active challenges
+          - `leaderboard` — top 10 for this challenge
+          - `streak` — your current streak
+          - `checkins` — all your check-in dates
+          - `progress` — check-ins done vs needed, time remaining
+          - `help` — show this message
+  site_settings:
+    daily_challenge_enabled: "Discourse Challenges enabled"
+    daily_challenge_mod_access_enabled: "Discourse Challenges mod access enabled"
+    daily_challenge_category_mod_access_enabled: "Discourse Challenges category mod access enabled"
+    daily_challenge_bot_username: "Bot username for check-in confirmations, reminders, and @mention commands (leave blank to disable). Username is case-sensitive — enter it exactly as it appears in Discourse."
