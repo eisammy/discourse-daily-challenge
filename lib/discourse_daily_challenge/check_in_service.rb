@@ -78,6 +78,68 @@ module DiscourseDailyChallenge
       end
     end
 
+    def self.process_edit(post)
+      return if post.topic_id.nil?
+
+      challenge = DailyChallenge.find_by(topic_id: post.topic_id)
+      return unless challenge&.active?
+
+      user = post.user
+      return unless user
+
+      return unless has_hashtag?(post, challenge.hashtag) || has_image?(post)
+
+      tz = ActiveSupport::TimeZone[challenge.challenge_timezone] || Time.zone
+      post_date = post.created_at.in_time_zone(tz).to_date
+
+      if challenge.check_in_interval == "weekly"
+        week_start_date, week_end_date = current_week_window(challenge)
+        return unless post_date >= week_start_date && post_date <= week_end_date
+        return if DailyCheckIn.exists?(
+          challenge_id: challenge.id,
+          user_id: user.id,
+          check_in_date: week_start_date..week_end_date,
+        )
+      else
+        return unless post.created_at >= 24.hours.ago
+        return if DailyCheckIn.exists?(
+          challenge_id: challenge.id,
+          user_id: user.id,
+          check_in_date: post_date,
+        )
+      end
+
+      DailyCheckIn.create!(
+        challenge_id: challenge.id,
+        user_id: user.id,
+        check_in_date: post_date,
+        post_id: post.id,
+        admin_added: false,
+      )
+
+      clear_reminder_keys(challenge, user.id)
+
+      total_check_ins = DailyCheckIn.where(challenge_id: challenge.id, user_id: user.id).count
+
+      Jobs.enqueue(
+        :discourse_daily_challenge_send_checkin_dm,
+        user_id: user.id,
+        challenge_id: challenge.id,
+      )
+
+      if total_check_ins == challenge.check_ins_needed
+        Jobs.enqueue(
+          :discourse_daily_challenge_send_completion_dm,
+          user_id: user.id,
+          challenge_id: challenge.id,
+        )
+      end
+    rescue ActiveRecord::RecordNotUnique
+      # duplicate check-in, silently skip
+    rescue StandardError => e
+      Rails.logger.error("DailyChallenge edit check-in error for post #{post.id}: #{e.message}")
+    end
+
     def self.has_hashtag?(post, hashtag)
       return false if hashtag.blank?
       post.raw.to_s.match?(/(?:^|\s)##{Regexp.escape(hashtag)}(?:\b|$)/i)

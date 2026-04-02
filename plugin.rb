@@ -66,4 +66,12 @@ after_initialize do
     next unless SiteSetting.daily_challenge_enabled
     DiscourseDailyChallenge::MentionHandler.handle(post)
   end
+
+  on(:post_revised) do |post|
+    next unless SiteSetting.daily_challenge_enabled
+    next if post.post_type != Post.types[:regular]
+    user = post.user
+    next if user.nil? || user.anonymous?
+    DiscourseDailyChallenge::CheckInService.process_edit(post)
+  end
 end
