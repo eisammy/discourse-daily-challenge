@@ -15,7 +15,7 @@ pt:
       footer: "Continue assim! Use a hashtag ou poste uma foto para fazer o check-in. 🔥"
     final_post:
       title: "Desafio Concluído — Resultados Finais 🏆"
-      intro: "O desafio fitness **#%{hashtag}** terminou. Aqui estão os resultados finais!"
+      intro: "O desafio da semana **#%{hashtag}** terminou. Aqui estão os resultados finais!"
       eligible_header: "### Participantes que concluíram o desafio"
       row: "- @%{username} — %{count} check-ins"
       congrats: "🏆 Parabéns a todos que concluíram o desafio!"
@@ -104,6 +104,6 @@ pt:
           - `help` — mostra esta mensagem
   site_settings:
     daily_challenge_enabled: "Discourse Desafios habilitados"
-    daily_challenge_mod_access_enabled: "Acesso de moderador aos Discourse Desafios habilitado"
-    daily_challenge_category_mod_access_enabled: "Acesso de moderador de categoria aos Discourse Desafios habilitado"
+    daily_challenge_mod_access_enabled: "Acesso de moderador ao Discourse Desafios habilitado"
+    daily_challenge_category_mod_access_enabled: "Acesso de moderador de categoria ao Discourse Desafios"
     daily_challenge_bot_username: "Nome de usuário do bot para confirmações de check-in, lembretes e comandos via menção @ (deixe em branco para desabilitar). O nome de usuário diferencia maiúsculas de minúsculas — insira-o exatamente como aparece no Discourse."
